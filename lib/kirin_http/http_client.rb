@@ -1,3 +1,5 @@
+require "net/http"
+
 module KirinHttp
 	class Client
 		# Sends the http message
@@ -31,7 +33,7 @@ module KirinHttp
 			req = type.new(request.path, request.header)
 			req.body = request.content unless request.content.nil?
 			resp = http.request(req)
-			Response.new(resp.body, resp.to_hash, resp.code)
+			Response.new(resp.body, resp.to_hash, resp.code.to_i)
 		end
 	end
 

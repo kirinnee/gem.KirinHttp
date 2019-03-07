@@ -5,15 +5,14 @@ stages:
 
 Unit Test:
   tags:
-    - kirinnee
+    - rubygem
   stage: test
   script:
     - bundle install
     - bundle exec rspec
 Build:
   tags:
-    - ruby
-    - kirinnee
+    - rubygem
   stage: build
   script: gem build $GEM_NAME
   artifacts:
@@ -21,8 +20,7 @@ Build:
       - ./*.gem
 Publish:
   tags:
-    - ruby
-    - kirinnee
+    - rubygem
   stage: publish
   script:
     - mkdir ~/.gem
